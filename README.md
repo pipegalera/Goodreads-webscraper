@@ -1,6 +1,4 @@
-![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
-
-# Goodreads webscraper: *goodreads_scraper.py*
+# Goodreads webscraper ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
 
 A Goodread.com python script to collect book data from Goodreads.
 

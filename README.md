@@ -26,7 +26,7 @@ The **inputs** of the *goodread_scraper()* function are:
 
 *Note: the web-scraper do not store information of any kind besides the books.*
 
-To the scraper to work, it is necessary to use a Goodreads registered user. Without introducing a valid username, the website do not allow to load more than 50 books or every section. I have created the a fake user with a fake email that is used as default (see minimal examples section).
+To the scraper to work, it is necessary to use a Goodreads registered user. I have created the a fake user with a fake email that is used as default (see minimal examples section).
 
 The **outputs** are a Dataframe and a csv file with the data structured.
 

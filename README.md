@@ -1,6 +1,6 @@
 # Goodreads webscraper ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A Goodread.com python script to collect book data from Goodreads.
+A Goodread.com python script to collect book data from Goodreads. You can use it with [any shelve of Goodreads](https://www.goodreads.com/genres/list).
 
 
 ![Preview gif](https://i.imgur.com/KtGRuqK.gif)
@@ -16,23 +16,9 @@ A Goodread.com python script to collect book data from Goodreads.
 - [BeautifulSoup](https://pypi.org/project/beautifulsoup4/)
 
 
-### Inputs and outputs
-
-The **inputs** of the *goodread_scraper()* function are:
-
-- *sections*: the section or sections to be scrapped. You can use [any shelve of Goodreads](https://www.goodreads.com/genres/list).
-- *user_email*: an email registered at Goodreads.com.
-- *password*: the password of the email.
-
-*Note: the web-scraper do not store information of any kind besides the books.*
-
-To the scraper to work, it is necessary to use a Goodreads registered user. I have created the a fake user with a fake email that is used as default (see minimal examples section).
-
-The **outputs** are a Dataframe and a csv file with the data structured.
-
 ### 3 Minimal examples
 
-1. Webscraping the 'Art' shelve using my default Goodreads user:
+1. Webscraping the 'Art' shelve:
 
 ```console
 terminal@pipe:~$ python -c "from goodreads_scraper.py import *;
@@ -44,6 +30,7 @@ Result:
 
 &nbsp;
 
+You can use your own *user_email* (an email registered at Goodreads.com) and *password* (the password of the email).
 
 2. Webscraping the 'Crime' shelve using your own Goodreads account:
 

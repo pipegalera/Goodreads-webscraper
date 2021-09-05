@@ -30,7 +30,7 @@ Result:
 
 &nbsp;
 
-You can use your own *user_email* (an email registered at Goodreads.com) and *password* (the password of the email).
+You can use your own *user_email* and *password*  for an email registered at Goodreads.com.
 
 2. Webscraping the 'Crime' shelve using your own Goodreads account:
 
@@ -40,6 +40,8 @@ terminal@pipe:~$ python -c "from goodreads_scraper.py import *;
                  user_email = 'an_alternative_mail@gmail.com',
                  password = 'PasswordOfThisGoodReadsMail')"
 ```
+
+:warning: this user it won't be stored anywhere by any means, feel free to check the source of the code at *goodreads_scraper.py*
 
 Result:
 

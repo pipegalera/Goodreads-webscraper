@@ -15,7 +15,7 @@ import re
 def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", password = 123456):
     random_sleeptime = random.randint(100,250)/100
     first_page = 1
-    last_page = 2
+    last_page = 26
     book_titles_list = []
     book_author_list = []
     book_ratings_list = []

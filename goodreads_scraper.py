@@ -15,7 +15,7 @@ import re
 def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", password = 123456):
     random_sleeptime = random.randint(100,250)/100
     first_page = 1
-    last_page = 26
+    last_page = 2
     book_titles_list = []
     book_author_list = []
     book_ratings_list = []
@@ -33,14 +33,14 @@ def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", pas
     # Initialize
     chromedriver_path = r'chromedriver.exe'
     browser = webdriver.Chrome(chromedriver_path, options =additional_options)
-    browser.get('https://www.goodreads.com')
+    browser.get('https://www.goodreads.com/user/sign_in')
 
     # Introduce user
 
-    browser.find_element_by_id("userSignInFormEmail").send_keys(user_email)
+    browser.find_element_by_id("user_email").send_keys(user_email)
     browser.find_element_by_id("user_password").send_keys(password)
-    browser.find_elements_by_xpath("//*[@id='sign_in']/div[3]/input[1]")[0].click()
-
+    # browser.find_elements_by_xpath("//*[@id='sign_in']/div[3]/input[1]")[0].click()
+    browser.find_elements_by_xpath("//*[@id='emailForm']/form/fieldset/div[5]/input[1]")[0].click()
     # ---------------------------- Loop over section(s) and shelve pages ----------------------- #
     for section in sections:
         for page in range(first_page, last_page):
@@ -57,6 +57,8 @@ def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", pas
 
             # ---------------------------- Book titles ---------------------------- #
             book_titles_soup = soup.find_all("a", class_= "bookTitle")
+            print(book_titles_soup)
+            print(len(book_titles_soup))
 
             for i in range(0, len(book_titles_soup)):
                 book_titles_list.append(book_titles_soup[i].text)
@@ -134,6 +136,17 @@ def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", pas
                 except:  # No book cover
                     book_image = 'NaN'
 
+                # Genre
+             	try:
+	                genres = soup.find_all(class_="actionLinkLite bookPageGenreLink")
+	                genres = [genre.text for genre in genres]
+
+	                print(genres)
+
+            	except:
+                	genres = []
+
+                book_genre_list.append(genres)
                 # Append to a list the description and book image
                 book_description_list.append(description)
                 book_image_list.append(book_image)
@@ -142,8 +155,8 @@ def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", pas
                 browser.back()
 
             # ---------------------------- Book genre ---------------------------- #
-            for i in range(0, len(book_titles_soup)):
-                book_genre_list.append(str(section))
+            # for i in range(0, len(book_titles_soup)):
+            #     book_genre_list.append(str(section))
 
         # ---------------------------- Make a dataframe ---------------------------- #
 
@@ -158,7 +171,7 @@ def goodread_scraper(sections, user_email = "domantassabonisuser@gmail.com", pas
                             columns = ["Title", "Author", "Average rating",
                                        "Number of Ratings", "Year", "Book description", "Book image", "Genre"])
 
-        books_dataframe['Year'] = books_dataframe['Year'].astype('Int64')
+        # books_dataframe['Year'] = books_dataframe['Year'].astype('Int64')
 
         books_dataframe.to_csv('goodreads_data.csv', index = False)
 

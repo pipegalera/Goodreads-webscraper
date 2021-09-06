@@ -1,0 +1,6 @@
+# Any newer version of the following packages should together work as well.
+# Version denoted for testing purposes.
+
+pandas==1.2.1
+selenium==3.141.0
+bs4==0.0.1
